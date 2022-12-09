@@ -23,21 +23,46 @@ public class NumberGuessingGame
         // Default guess value
         int guess = 0;
         
+        // Default range value
+        int range = 10;
+        
         // Initialize Generator Object
         Generator gen = new Generator(guess);
         
+        // Ask for wanted difficulty level
+        System.out.println("Difficulty level (easy, medium, hard, extreme): ");
+        String difficulty = in.next();
+        
+        // Inform user of difficulty chosen
+        if (difficulty.toLowerCase().equals("easy")){
+            System.out.println("Guess a number from 1 to 10");
+            range = 10;
+        }
+        else if (difficulty.toLowerCase().equals("medium")){
+            System.out.println("Guess a number from 1 to 20");
+            range = 20;
+        }
+        else if (difficulty.toLowerCase().equals("hard")){
+            System.out.println("Guess a number from 1 to 50");
+            range = 50;
+        }
+        else if (difficulty.toLowerCase().equals("extreme")){
+            System.out.println("Guess a number from 1 to 100");
+            range = 100;
+        }
+        
         // Get random number
-        int specialNum = gen.getNum();
+        int specialNum = gen.getRange(difficulty);
         
         // Keep asking for input until user guesses correctly or quits
         while (guess != specialNum){
-            System.out.println("Enter a guess between 1 and 10 (enter -1 to quit): ");
+            System.out.println("Enter a guess (enter -1 to quit): ");
             guess = in.nextInt();
             
             if (guess == -1){
                 break;
             }
-            else if (guess < 1 || guess > 10){
+            else if (guess < 1 || guess > range){
                 System.out.println("Guess out of bounds, please try again");
             }
         }
