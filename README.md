@@ -1,2 +1,2 @@
-# FinalProject
-Number Guessing Game
+# Number Guessing Game (Final Project)
+by Raymond Zhu
